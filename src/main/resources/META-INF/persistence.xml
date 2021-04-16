@@ -6,6 +6,12 @@
 	<persistence-unit name="moderneducationPU"
 		transaction-type="JTA">
 		<jta-data-source>java:/ModernEducationDS</jta-data-source>
+		<class>pe.edu.upc.moderneducation.models.entities.Chapter</class>
+		<class>pe.edu.upc.moderneducation.models.entities.Comment</class>
+		<class>pe.edu.upc.moderneducation.models.entities.Course</class>
+		<class>pe.edu.upc.moderneducation.models.entities.DetailCourseStudent</class>
+		<class>pe.edu.upc.moderneducation.models.entities.Resource</class>
+		<class>pe.edu.upc.moderneducation.models.entities.Video</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
 			<property
