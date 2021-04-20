@@ -45,22 +45,17 @@ public class DetailCourseStudentId implements Serializable {
 	}
 	
 	
-	// if (a == b) -> comparar objetos
 	@Override
 	public boolean equals(Object obj) {
-		// Si es el mismo
 		if(this == obj)
 			return true;
-		// Si el obj es null
 		if(obj == null || getClass() != obj.getClass())
 			return false;
-		// verificar los atributos iguales
-		//Cast
+		
 		DetailCourseStudentId detailCourseStudentId = (DetailCourseStudentId)obj;
 		
 		if(this.student != detailCourseStudentId.student)
 			return false;
-		
 		if(this.course != detailCourseStudentId.course)
 			return false;
 		return true;

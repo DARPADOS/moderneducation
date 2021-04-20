@@ -30,7 +30,7 @@ public class Student {
 	@OneToMany(mappedBy="student", fetch=FetchType.LAZY)
 	private List<Assistance> assistances;
 	
-	//@OneToMany(mappepBy="student")
-	//private List<DetailCourseStudent> detailcourseStudents;
+	@OneToMany(mappedBy="student")
+	private List<DetailCourseStudent> detailcourseStudents;
 	
 }

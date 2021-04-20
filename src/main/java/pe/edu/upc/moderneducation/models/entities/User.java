@@ -48,10 +48,10 @@ public class User {
 	
 	@OneToOne
 	@MapsId
-	@JoinColumn(name="id")
+	@JoinColumn(name="user")
 	private Student student;
 	
-	@OneToMany(mappedBy="user", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="main", fetch=FetchType.LAZY)
 	private List<Comment> comments;
 	
 }
