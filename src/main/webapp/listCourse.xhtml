@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"> <ui:composition
+    template="master.xhtml">
+
+    <ui:define name="title">
+        .:Listado de Regiones:.
+    </ui:define>
+
+    <ui:define name="titleCont">
+        <span>Regiones </span>
+    </ui:define>
+
+    <ui:define name="content">
+
+        <h:form>
+
+            <div class="row"> <div class="col-sm-8 text-right"> <div
+                class="form-group box-main-btn"> <p:commandButton
+                value="Nuevo"
+                action="#{courseController.newCourse()}"
+                styleClass="btn btn-danger"
+                ajax="false" /> </div> </div> </div>
+
+            <div class="container"> <div
+                class="row row-cols-2 row-cols-md-2 g-4"> <p:repeat
+                var="course"
+                value="#{courseController.listCourse}">
+                <div class="col"> <div
+                    class="card course shadow p-3 mb-5 bg-body rounded"> <img
+                    src="resources/img/curso.jpg"
+                    class="card-img-top"
+                    alt=""> </img> <div class="card-body"> <h5
+                    class="card-title">#{course.name}</h5> <p class="card-text">#{course.description}</p>
+                </div></div> </div>
+            </p:repeat> </div> </div>
+        </h:form>
+    </ui:define>
+</ui:composition> </html>
