@@ -5,9 +5,9 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
 
 import pe.edu.upc.moderneducation.models.entities.Course;
 import pe.edu.upc.moderneducation.models.entities.Teacher;
@@ -20,7 +20,6 @@ public class CourseController {
 	@Inject
 	private ICourseService cService;
 	private Course course;
-	private Teacher teacher;
 	List<Course> listCourse;
 	
 	@PostConstruct
@@ -35,10 +34,26 @@ public class CourseController {
 		return "course.xhtml";
 	}
 	
-	public void insert(Integer idCourse) {
+	public String updateCourse(Integer idCourse) {
+		//System.out.println("pre co" + co.getTeacher());
+		//this.setCourse(co);
+		//System.out.println("post co" + course.getTeacher());
+		Course co = cService.findCourseById(idCourse);
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("updateCourse", co);
+				
+		return "testUpdate.xhtml";
+	}
+	
+	public Course getUpdateCourseFacesContext() {
+		Course co = (Course) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("updateCourse");
+		return co;
+	}
+	
+	public void insert(Integer idTeacher) {
 		try {
 			//course.setId(idCourse);
-			cService.insert(course,idCourse);
+			course.setMineture_image("450_1000.jpg");
+			cService.insert(course,idTeacher);
 		}
 		catch(Exception e){
 			System.out.println("Error al insertar en el controller de curso");
@@ -53,6 +68,18 @@ public class CourseController {
 			System.out.println("Error al listar en el controller de curso");
 		}
 	}
+	// Cambiar a teacher cuando se implemente
+	public List<Course> findByTeacher(Integer idTeacher){
+		try {
+			Teacher te = new Teacher();
+			te.setId(idTeacher);
+			this.listCourse = cService.findByTeacher(te);
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		return this.listCourse;
+	}
 
 	public void delete(Course co) {
 		try {
@@ -64,9 +91,9 @@ public class CourseController {
 		}
 	}
 	
-	public void update(Course co) {
+	public void update() {
 		try {
-			cService.update(co);
+			cService.update(this.getUpdateCourseFacesContext());
 		}
 		catch(Exception e) {
 			System.out.println("Error al actualizar en el controller de curso");

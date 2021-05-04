@@ -8,6 +8,7 @@ import javax.inject.Named;
 
 import pe.edu.upc.moderneducation.dao.ICourseDao;
 import pe.edu.upc.moderneducation.models.entities.Course;
+import pe.edu.upc.moderneducation.models.entities.Teacher;
 import pe.edu.upc.moderneducation.service.ICourseService;
 
 @Named
@@ -41,4 +42,13 @@ public class CourseServiceImpl implements ICourseService{
 		return cDao.update(co);
 	}
 	
+	@Override
+	public List<Course> findByTeacher(Teacher teacher){
+		return cDao.findByTeacher(teacher);
+	}
+	
+	@Override
+	public Course findCourseById(Integer idCourse) {
+		return cDao.findCourseById(idCourse);
+	}
 }

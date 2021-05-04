@@ -39,7 +39,7 @@ public class CourseDaoImpl implements ICourseDao {
 		// TODO Auto-generated method stub
 		List<Course> list=new ArrayList<Course>();
 		try {
-			Query q=em.createQuery("from Course c");
+			Query q=em.createQuery("from Course c ORDER BY c.id ASC");
 			list=(List<Course>)q.getResultList();
 		}
 		catch(Exception e) {
@@ -68,14 +68,43 @@ public class CourseDaoImpl implements ICourseDao {
 	public Integer update(Course co) {
 		// TODO Auto-generated method stub
 		try {
+			co.setTeacher(em.getReference(Teacher.class, co.getTeacher().getId()));
 			em.merge(co);
 		}
 		catch(Exception e) {
+			System.out.println(e.getMessage());
 			System.out.println("Error al actualizar el curso");
 		}
 		return co.getId();
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Course> findByTeacher(Teacher teacher){
+		List<Course> list = new ArrayList<Course>();
+		try {
+			Teacher te = em.getReference(Teacher.class, teacher.getId());
+			Query q = em.createQuery("select c from Course c where c.teacher = ?1");
+			q.setParameter(1, te);
+			list = (List<Course>) q.getResultList();
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return list;
+	}
+
+	@Override
+	public Course findCourseById(Integer idCourse) {
+		Course co = new Course();
+		try {
+			co = em.find(Course.class, idCourse);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return co;
+	}
 }
 
 	

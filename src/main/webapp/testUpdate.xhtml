@@ -18,21 +18,21 @@
 		<h:form>
 
 			<h:outputLabel for="name" value="nombre" styleClass="control-label" />
-			<p:inputText autocomplete="off" id="name" styleClass="form-control"
-				value="#{courseController.course.name}" required="true" />
+			<p:inputText autocomplete="off" id="name" styleClass="form-control" placeholder="#{courseController.updateCourseFacesContext.name}"
+				value="#{courseController.updateCourseFacesContext.name}" required="true" />
 
 			<h:outputLabel for="description" value="Descripción"
 				styleClass="control-label" />
-			<p:inputText autocomplete="off" id="description"
+			<p:inputText autocomplete="off" id="description" placeholder="#{courseController.updateCourseFacesContext.description}"
 				styleClass="form-control"
-				value="#{courseController.course.description}" maxlength="30"
+				value="#{courseController.updateCourseFacesContext.description}" maxlength="30"
 				required="false" />
 
 			<h:outputLabel for="language" value="Lenguaje"
 				styleClass="control-label" />
-			<p:inputText autocomplete="off" id="language"
+			<p:inputText autocomplete="off" id="language" placeholder="#{courseController.updateCourseFacesContext.language}"
 				styleClass="form-control"
-				value="#{courseController.course.language}" maxlength="30"
+				value="#{courseController.updateCourseFacesContext.language}" maxlength="30"
 				required="true" />
 
 			<br />
@@ -40,7 +40,7 @@
 			<br />
 
 			<p:commandButton value="Confirmar"
-				actionListener="#{courseController.insert(1)}"
+				actionListener="#{courseController.update()}"
 				styleClass="btn btn-primary " update="@form"
 				action="listCourse?faces-redirect=true" />
 

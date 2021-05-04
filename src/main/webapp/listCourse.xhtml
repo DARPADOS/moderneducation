@@ -14,32 +14,33 @@
 		<h:form>
 			<div class="row pt-3 px-3">
 				<div class = "col-sm-6">
-					<h2>Cursos</h2>
+					<h2>Mis Cursos</h2>
 				</div>
 			</div>
-			<div class="row px-3">
+
+			<div class="row px-3 my-3">
 			 	<div class="col d-flex justify-content-end"> 
 				
 				 <p:commandButton
 				value="Nuevo" 
-				action="#{regionController.newRegion()}"
-				styleClass="btn btn-primary"
+				action="#{courseController.newCourse()}"
+				styleClass="btn btn-primary shadow"
 				ajax="false" /> 
 				
 				</div>
 			</div>
 			
-			<div class="row justify-content-center py-4">
-		      <div class="row row-cols-5">
-		        <p:repeat var="region" value="#{regionController.listaRegiones}">
-		          <div class="col">
-		            <div class="card shadow p-0 mb-3 bg-body rounded">
-		              <img src="resources/img/450_1000.jpg" class="card-img-top" alt=""
-		              />
+			<div class="row justify-content-center py-3 px-3">
+		      <div class="row row-cols-4">
+		        <p:repeat var="course" value="#{courseController.findByTeacher(1)}">
+		          <div class="col pb-3">
+		            <div class="card h-100 shadow-sm bg-body rounded">
+		              <img src="resources/img/#{course.mineture_image}" class="card-img-top" style="width: 290px;" alt=""/>
 		              <div class="card-body">
-		                <h5 class="card-title">#{region.id}</h5>
-		                <p class="card-text">#{region.name}</p>
-		                 <a href="#" class="stretched-link"></a>
+		                <h5 class="card-title">#{course.name}</h5>
+		                <h6 class="card-subtitle mb-2 text-muted">#{course.teacher.user.firstName} #{course.teacher.user.lastName}</h6>
+		                <p class="card-text">#{course.description}</p>
+		                 <p:commandLink id="nonAjax" action="#{courseController.updateCourse(course.id)}" styleClass="stretched-link" ajax="false"/>
 		              </div>
 		            </div>
 		          </div>
