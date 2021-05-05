@@ -33,11 +33,11 @@ public class ChapterController {
 	//metodos especializados
 	public String newChapter() {
 		this.setChapter(new Chapter());
-		return "";
+		return "Chapter.xhtml";
 	}
-	public void insert() {
+	public void insert(Integer idCourse) {
 		try {
-			rService.insert(chapter);
+			rService.insert(chapter, idCourse);
 			
 		} catch (Exception e) {
 			// TODO: handle exception

@@ -12,6 +12,7 @@ import javax.transaction.Transactional;
 
 import pe.edu.upc.moderneducation.dao.IChapterDao;
 import pe.edu.upc.moderneducation.models.entities.Chapter;
+import pe.edu.upc.moderneducation.models.entities.Course;
 
 public class ChapterDaoImpl implements IChapterDao {
 
@@ -21,9 +22,11 @@ public class ChapterDaoImpl implements IChapterDao {
 	
 	@Transactional
 	@Override
-	public void insert(Chapter chap) {
+	public void insert(Chapter chap, Integer idCourse) {
 		// TODO Auto-generated method stub
 		try {
+			Course co=em.getReference(Course.class, idCourse);
+			chap.setCourse(co);
 			em.persist(chap);
 		} catch (Exception e) {
 			// TODO: handle exception

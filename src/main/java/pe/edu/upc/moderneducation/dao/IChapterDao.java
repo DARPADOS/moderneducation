@@ -8,7 +8,7 @@ import java.util.List;
 import pe.edu.upc.moderneducation.models.entities.Chapter;
 
 public interface IChapterDao {
-	public void insert(Chapter chap);
+	public void insert(Chapter chap, Integer idCourse);
 	public List<Chapter>list();
 	public void delete(int idChapter);
 	
