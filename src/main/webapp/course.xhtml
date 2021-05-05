@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="listCourse.xhtml">
+
+	<ui:define name="title">
+        .:Registro de cursos uwu:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Curso mi shamo</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+
+			<h:outputLabel for="name" value="nombre" styleClass="control-label" />
+			<p:inputText autocomplete="off" id="name" styleClass="form-control"
+				value="#{courseController.course.name}" required="true" />
+
+			<h:outputLabel for="description" value="Descripción"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="description"
+				styleClass="form-control"
+				value="#{courseController.course.description}" maxlength="30"
+				required="false" />
+
+			<h:outputLabel for="language" value="Lenguaje"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="language"
+				styleClass="form-control"
+				value="#{courseController.course.language}" maxlength="30"
+				required="true" />
+
+			<br />
+
+			<br />
+
+			<p:commandButton value="Confirmar"
+				actionListener="#{courseController.insert(1)}"
+				styleClass="btn btn-primary " update="@form"
+				action="listCourse?faces-redirect=true" />
+
+			<p:commandButton value="Cancelar"
+				action="listCourse?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

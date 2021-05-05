@@ -46,7 +46,7 @@ public class Course {
 	@Column(name = "description", length = 250, nullable = false)
 	private String description;
 	
-	@Column(name = "mineture_image", length = 500, nullable = false)
+	@Column(name = "mineture_image", length = 500)
 	private String mineture_image;
 
 	@OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
