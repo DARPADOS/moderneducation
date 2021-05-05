@@ -1,6 +1,8 @@
 package pe.edu.upc.moderneducation.daoimpl;
 
 import java.util.ArrayList;
+
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -30,6 +32,7 @@ public class ChapterDaoImpl implements IChapterDao {
 		}
 	}
 
+
 	@Override
 	public List<Chapter> list() {
 		// TODO Auto-generated method stub
@@ -40,9 +43,9 @@ public class ChapterDaoImpl implements IChapterDao {
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
-			System.out.println("Error al listar Region en el dao");
+			System.out.println("Error al listar Chapter en el dao");
 		}
-		return null;
+		return lista;
 	}
 
 	@Transactional
@@ -56,7 +59,7 @@ public class ChapterDaoImpl implements IChapterDao {
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
-			System.out.println("Error al insertar Region en el dao");
+			System.out.println("Error al insertar chapter en el dao");
 		}
 	}
 

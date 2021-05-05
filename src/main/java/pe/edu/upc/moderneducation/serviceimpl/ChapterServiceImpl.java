@@ -15,11 +15,12 @@ import pe.edu.upc.moderneducation.service.IChapterService;
 public class ChapterServiceImpl implements IChapterService{
 	@Inject
 	private IChapterDao rDao;
+	
 	@Override
 	public void insert(Chapter chap) {
-		// TODO Auto-generated method stub
 		rDao.insert(chap);
 	}
+	
 	@Override
 	public List<Chapter> list() {
 		// TODO Auto-generated method stub

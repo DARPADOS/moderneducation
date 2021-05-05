@@ -1,9 +1,12 @@
 package pe.edu.upc.moderneducation.controller;
 
 import java.util.ArrayList;
+
 import java.util.List;
+import java.util.Optional;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -11,6 +14,7 @@ import pe.edu.upc.moderneducation.models.entities.Chapter;
 import pe.edu.upc.moderneducation.service.IChapterService;
 
 @Named
+@RequestScoped
 public class ChapterController {
 	@Inject
 	private IChapterService rService; 
@@ -29,7 +33,7 @@ public class ChapterController {
 	//metodos especializados
 	public String newChapter() {
 		this.setChapter(new Chapter());
-		return "Chapter.xhtml";
+		return "";
 	}
 	public void insert() {
 		try {
@@ -71,7 +75,5 @@ public class ChapterController {
 	public void setListaChapter(List<Chapter> listaChapter) {
 		this.listaChapter = listaChapter;
 	}
-	
-	
 	
 }
