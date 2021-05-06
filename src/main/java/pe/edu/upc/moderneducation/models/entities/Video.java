@@ -16,7 +16,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Video")
+@Table(name = "video")
 @SequenceGenerator(name="Video_video_id_seq",initialValue=1,allocationSize = 1)
 public class Video {
 	
@@ -26,7 +26,7 @@ public class Video {
 	private Integer id;
 	
 	@ManyToOne
-	@JoinColumn(name = "chapter_id", nullable = false)
+	@JoinColumn(name = "chapter_id", nullable = true)
 	private Chapter chapter;
 	
 	@Column(name = "name", length = 100, nullable = false)

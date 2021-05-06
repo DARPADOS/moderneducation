@@ -32,7 +32,6 @@ public class CourseDaoImpl implements ICourseDao {
 			System.out.println("Error al insertar un curso");
 		}
 	}
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Course> list() {
