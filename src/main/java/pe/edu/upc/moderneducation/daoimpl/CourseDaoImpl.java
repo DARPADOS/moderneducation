@@ -84,7 +84,7 @@ public class CourseDaoImpl implements ICourseDao {
 		List<Course> list = new ArrayList<Course>();
 		try {
 			Teacher te = em.getReference(Teacher.class, teacher.getId());
-			Query q = em.createQuery("select c from Course c where c.teacher = ?1");
+			Query q = em.createQuery("select c from Course c where c.teacher = ?1 ORDER BY c.id ASC");
 			q.setParameter(1, te);
 			list = (List<Course>) q.getResultList();
 			

@@ -38,15 +38,20 @@
 			<br />
 
 			<br />
+			
+			<p:commandButton value="Atras"
+				action="listCourse?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
 
 			<p:commandButton value="Confirmar"
 				actionListener="#{courseController.update()}"
 				styleClass="btn btn-primary " update="@form"
 				action="listCourse?faces-redirect=true" />
-
-			<p:commandButton value="Cancelar"
-				action="listCourse?faces-redirect=true" immediate="true"
-				styleClass="btn btn-default" ajax="false" />
+				
+			<p:commandButton value="Eliminar"
+				actionListener="#{courseController.delete(courseController.updateCourseFacesContext)}"
+				styleClass="btn btn-danger " update="@form"
+				action="listCourse?faces-redirect=true" />
 		</h:form>
 	</ui:define>
 

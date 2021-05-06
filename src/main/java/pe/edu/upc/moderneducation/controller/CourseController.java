@@ -85,8 +85,10 @@ public class CourseController {
 		try {
 			cService.delete(co.getId());
 			this.list();
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("idCourse");
 		}
 		catch(Exception e) {
+			System.out.println(e.getMessage());
 			System.out.println("Error al eliminar en el controller de curso");
 		}
 	}
@@ -123,7 +125,4 @@ public class CourseController {
 	public void setListCourse(List<Course> listCourse) {
 		this.listCourse = listCourse;
 	}
-	
-	
-	
 }
