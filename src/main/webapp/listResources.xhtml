@@ -4,7 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
-<ui:composition template="master.xhtml">
+<ui:composition template="teacherTemplate.xhtml">
 
 
 	<ui:define name="title">
@@ -26,7 +26,10 @@
 
 						<p:commandButton value="Agregar Recurso"
 							action="#{resourceController.newResource()}"
-							styleClass="btn btn-danger" ajax="false" />
+							styleClass="btn btn-primary" ajax="false" />
+						<p:commandButton value="Atras"
+				action="testUpdate?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
 					</div>
 				</div>
 			</div>
@@ -59,7 +62,7 @@
 							</p:column>
 							
 							<p:column headerText="Código del Curso">
-								<h:outputText value="#{res.course}" />
+								<h:outputText value="#{res.course.id}" />
 							</p:column>
 
 							<p:column headerText="Operación">

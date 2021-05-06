@@ -5,9 +5,12 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import pe.edu.upc.moderneducation.models.entities.Chapter;
 import pe.edu.upc.moderneducation.models.entities.Video;
 import pe.edu.upc.moderneducation.service.IVideoService;
 
@@ -26,7 +29,7 @@ public class VideoController {
 	public void init() {
 		this.video=new Video();
 		this.listaVideos=new ArrayList<Video>();
-		this.list();
+		this.listVideoByChapter();
 	}
 	
 	
@@ -38,8 +41,18 @@ public class VideoController {
 		return "video.xhtml";
 	}
 	
+	public void listVideoByChapter() {
+		listaVideos = vService.findByChapter(getActualChapter().getId());
+	}
+	
+	public Chapter getActualChapter() {
+		return (Chapter) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("actualChapter");
+	}
+	
 	public void insert() {
 		try {
+			Chapter chap = this.getActualChapter();
+			video.setChapter(chap);
 			vService.insert(video);
 		} catch (Exception e) {
 			System.out.println("Error al insertar en el controller de video");

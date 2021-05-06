@@ -43,7 +43,9 @@
 				styleClass="btn btn-primary " update="@form"
 				action="testUpdate?faces-redirect=true"/>
 
-			<p:commandButton value="Cancelar" />
+			<p:commandButton value="Cancelar"
+				action="testUpdate?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
 		</h:form>
 	</ui:define>
 

@@ -14,6 +14,7 @@ import pe.edu.upc.moderneducation.dao.IChapterDao;
 import pe.edu.upc.moderneducation.models.entities.Chapter;
 import pe.edu.upc.moderneducation.models.entities.Course;
 
+
 public class ChapterDaoImpl implements IChapterDao {
 
 	//dandole acceso a todos los metodos de esta clase para que accedan a la conexion 
@@ -62,6 +63,25 @@ public class ChapterDaoImpl implements IChapterDao {
 			System.out.println(e.getMessage());
 			System.out.println("Error al insertar chapter en el dao");
 		}
+	}
+
+
+	@Override
+	public List<Chapter> findByCourse(Integer idCourse) {
+		List<Chapter> list = new ArrayList<Chapter>();
+		Course cha = new Course();
+		try {
+			cha = em.getReference(Course.class, idCourse);
+			Query q = em.createQuery("select c from Chapter c where c.course = ?1 ORDER BY c.id ASC");
+			q.setParameter(1, cha);
+			list = (List<Chapter>) q.getResultList();
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Error al listar por curso chapter en el dao");
+		}
+		
+		return list;
 	}
 
 }

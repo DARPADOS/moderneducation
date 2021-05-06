@@ -4,7 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-<ui:composition template="master.xhtml">
+<ui:composition template="teacherTemplate.xhtml">
 
 	<ui:define name="title">
         .:Registro de Recursos:.
@@ -44,7 +44,7 @@
 			<p:commandButton value="Grabar"
 				actionListener="#{resourceController.insert()}"
 				styleClass="btn btn-primary " update="@form"
-				action="listResources?faces-redirect=true" immediate="true" />
+				action="listResources?faces-redirect=true"/>
 
 
 			<p:commandButton value="Cancelar"

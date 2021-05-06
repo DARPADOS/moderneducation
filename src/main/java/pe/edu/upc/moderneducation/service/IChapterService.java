@@ -12,4 +12,5 @@ public interface IChapterService {
 public void insert(Chapter chap);
 List<Chapter> list();
 public void delete(int chapter_id);
+List<Chapter> findByCourse(Integer idCourse);
 }

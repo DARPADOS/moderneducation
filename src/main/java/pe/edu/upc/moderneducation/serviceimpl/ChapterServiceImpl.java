@@ -33,4 +33,10 @@ public class ChapterServiceImpl implements IChapterService{
 		rDao.delete(chapter_id);
 	}
 
+	@Override
+	public List<Chapter> findByCourse(Integer idCourse) {
+		// TODO Auto-generated method stub
+		return rDao.findByCourse(idCourse);
+	}
+
 }

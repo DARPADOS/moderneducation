@@ -32,4 +32,9 @@ public class VideoServicelmpl implements IVideoService {
 		vDao.delete(id);
 	}
 
+	@Override
+	public List<Video> findByChapter(Integer idChapter) {
+		return vDao.findByChapter(idChapter);
+	}
+
 }

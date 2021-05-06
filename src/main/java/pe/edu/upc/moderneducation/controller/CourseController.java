@@ -40,7 +40,8 @@ public class CourseController {
 		//System.out.println("post co" + course.getTeacher());
 		Course co = cService.findCourseById(idCourse);
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("updateCourse", co);
-				
+		
+		
 		return "testUpdate.xhtml";
 	}
 	

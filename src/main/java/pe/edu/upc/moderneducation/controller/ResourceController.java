@@ -5,9 +5,11 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import pe.edu.upc.moderneducation.models.entities.Course;
 import pe.edu.upc.moderneducation.models.entities.Resource;
 import pe.edu.upc.moderneducation.service.IResourceService;
 
@@ -39,9 +41,11 @@ public class ResourceController {
 	
 	public void insert() {
 		try {
-			System.out.println("el nombre del recurso"+resource.getName());
-			System.out.println("link del recurso"+resource.getLink());
-			System.out.println("tipo del recurso"+resource.getType());
+			
+			Course co = (Course) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("updateCourse");
+			
+			resource.setCourse(co);
+			
 			rService.insert(resource);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

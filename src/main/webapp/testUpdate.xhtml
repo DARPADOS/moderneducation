@@ -45,21 +45,17 @@
 
 			<p:commandButton value="Confirmar"
 				actionListener="#{courseController.update()}"
-				styleClass="btn btn-primary " update="@form"
-				action="listCourse?faces-redirect=true" />
-<<<<<<< HEAD
+				styleClass="btn btn-primary" update="@form" />
 				
 			<p:commandButton value="Eliminar"
 				actionListener="#{courseController.delete(courseController.updateCourseFacesContext)}"
 				styleClass="btn btn-danger " update="@form"
 				action="listCourse?faces-redirect=true" />
-=======
-
-			<p:commandButton value="Cancelar"
-				action="listCourse?faces-redirect=true" immediate="true"
-				styleClass="btn btn-default" ajax="false" />
+				
 			<br />
-
+			<p:commandButton
+				value="Recursos" action="listResources.xhtml"
+				styleClass="btn btn-warning" ajax="false" /> 
 			<br />
 			<h:outputLabel for="capitulos" value="Chapters"></h:outputLabel>
 			<br />
@@ -79,7 +75,7 @@
 					<h:outputText value="#{chap.description}" />
 				</p:column>
 				<p:column headerText="Videos">
-				<h:commandLink action="lstChapter" value=">lista de reproduccion"/>
+				<h:commandLink action="#{chapterController.viewListVideo(chap)}" value=">lista de reproduccion"/>
 				</p:column>
 				
 				<p:column headerText="Operacion">
@@ -90,9 +86,8 @@
 			
 			<p:commandButton
 				value="Nuevo" action="#{chapterController.newChapter()}"
-				styleClass="btn btn-danger" ajax="false" /> 
-
->>>>>>> 947c731c74c4958c9907ea51c950385e5a1e756a
+				styleClass="btn btn-primary" ajax="false" /> 
+				
 		</h:form>
 	</ui:define>
 

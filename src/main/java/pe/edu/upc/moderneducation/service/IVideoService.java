@@ -10,4 +10,6 @@ public interface IVideoService {
 	List<Video> list();
 
 	public void delete(int id);
+	
+	public List<Video> findByChapter(Integer idChapter);
 }

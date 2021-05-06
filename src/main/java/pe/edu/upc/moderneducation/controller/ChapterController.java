@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -33,16 +34,33 @@ public class ChapterController {
 		this.chapter=new Chapter();
 		this.listaChapter=new ArrayList<Chapter>();	
 		this.listaCourse=new ArrayList<Course>();
-		this.listChapter();
+		//this.listChapter();
 		this.listCourse();
+		this.listaChapter = this.listChapterByCourse();
+	}
+	
+	private List<Chapter> listChapterByCourse() {
+		
+		Course chap = (Course) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("updateCourse");
+		return rService.findByCourse(chap.getId());
+		
 	}
 	//metodos especializados
 	public String newChapter() {
 		this.setChapter(new Chapter());
 		return "Chapter.xhtml";
 	}
+	
+	public String viewListVideo(Chapter chap) {
+		
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("actualChapter", chap);
+		return "listVideo.xhtml";
+	}
+	
 	public void insert() {
 		try {
+			Course co = (Course) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("updateCourse");
+			chapter.setCourse(co);
 			rService.insert(chapter);
 			
 		} catch (Exception e) {
