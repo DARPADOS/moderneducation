@@ -11,29 +11,35 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.moderneducation.models.entities.Chapter;
+import pe.edu.upc.moderneducation.models.entities.Course;
 import pe.edu.upc.moderneducation.service.IChapterService;
+import pe.edu.upc.moderneducation.service.ICourseService;
 
 @Named
 @RequestScoped
 public class ChapterController {
 	@Inject
 	private IChapterService rService; 
-	
+	@Inject
+	private ICourseService cService;
 	//variables
 	private Chapter chapter;
 	List<Chapter>listaChapter;
+	List<Course>listaCourse;
 	
 	//constructores
 	@PostConstruct 
 	public void init() {
 		this.chapter=new Chapter();
 		this.listaChapter=new ArrayList<Chapter>();	
-		this.list();
+		this.listaCourse=new ArrayList<Course>();
+		this.listChapter();
+		this.listCourse();
 	}
 	//metodos especializados
 	public String newChapter() {
 		this.setChapter(new Chapter());
-		return "";
+		return "Chapter.xhtml";
 	}
 	public void insert() {
 		try {
@@ -44,9 +50,17 @@ public class ChapterController {
 			System.out.println("Error al insertar en el controller el chapter");
 		}
 	}
-	public void list() {
+	public void listChapter() {
 		try {
 			listaChapter=rService.list();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Error al listar en el controller de chapter");
+		}
+	}
+	public void listCourse(){
+		try {
+			listaCourse=cService.list();
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("Error al listar en el controller de chapter");
@@ -55,7 +69,7 @@ public class ChapterController {
 	public void delet(Chapter re) {
 		try {
 			rService.delete(re.getId());
-			this.list();
+			this.listChapter();
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("Error al eliminar en el controller de chapter");
@@ -74,6 +88,12 @@ public class ChapterController {
 	}
 	public void setListaChapter(List<Chapter> listaChapter) {
 		this.listaChapter = listaChapter;
+	}
+	public List<Course> getListaCourse() {
+		return listaCourse;
+	}
+	public void setListaCourse(List<Course> listaCourse) {
+		this.listaCourse = listaCourse;
 	}
 	
 }

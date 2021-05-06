@@ -12,6 +12,7 @@ import javax.transaction.Transactional;
 
 import pe.edu.upc.moderneducation.dao.IChapterDao;
 import pe.edu.upc.moderneducation.models.entities.Chapter;
+import pe.edu.upc.moderneducation.models.entities.Course;
 
 public class ChapterDaoImpl implements IChapterDao {
 
@@ -28,7 +29,7 @@ public class ChapterDaoImpl implements IChapterDao {
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
-			System.out.println("Error al insertar Region en el dao");
+			System.out.println("Error al insertar Chapter en el dao");
 		}
 	}
 
