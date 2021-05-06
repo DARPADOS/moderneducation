@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"> <ui:composition
+	template="teacherTemplate.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Videos:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Registro de Videos</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="idVideo" value="Código " styleClass="control-label" />
+			<p:inputText autocomplete="off" id="idVideo"
+				styleClass="form-control"
+				value="#{videoController.video.id}" required="false" />
+				
+				
+				
+			<h:outputLabel for="nameVideo" value="Video "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="nameVideo"
+				styleClass="form-control"
+				value="#{videoController.video.name}"
+				maxlength="100" required="true" />
+			
+			
+			<h:outputLabel for="descVideo" value="Descripción del video"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="descVideo"
+				styleClass="form-control"
+				value="#{videoController.video.description}"
+				maxlength="150" required="true" />
+				
+			
+			<h:outputLabel for="linkVideo" value="Link del Video"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="linkVideo"
+				styleClass="form-control"
+				value="#{videoController.video.link}"
+				maxlength="100" required="true" />
+				
+					
+			<br />
+			<p:commandButton value="Grabar"
+				actionListener="#{videoController.insert()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listVideo?faces-redirect=true" />
+				
+				
+			<p:commandButton value="Cancelar"
+				action="listVideo?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition> </html>

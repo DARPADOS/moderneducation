@@ -6,6 +6,12 @@
    http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
 
 	<display-name>ModernEducation</display-name>
+	<welcome-file-list>
+		<welcome-file>listCourse.xhtml</welcome-file>
+		<welcome-file>listVideo.xhtml</welcome-file>
+		<welcome-file>master.xhtml</welcome-file>
+		<welcome-file>video.xhtml</welcome-file>
+	</welcome-file-list>
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -15,8 +21,10 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
-	<welcome-file-list>
-		<welcome-file>index.xhtml</welcome-file>
-	</welcome-file-list>
+
+	<context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>none</param-value>
+	</context-param>
 
 </web-app>
