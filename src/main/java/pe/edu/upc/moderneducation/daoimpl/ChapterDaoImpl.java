@@ -22,16 +22,14 @@ public class ChapterDaoImpl implements IChapterDao {
 	
 	@Transactional
 	@Override
-	public void insert(Chapter chap, Integer idCourse) {
+	public void insert(Chapter chap) {
 		// TODO Auto-generated method stub
 		try {
-			Course co=em.getReference(Course.class, idCourse);
-			chap.setCourse(co);
 			em.persist(chap);
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
-			System.out.println("Error al insertar Region en el dao");
+			System.out.println("Error al insertar Chapter en el dao");
 		}
 	}
 

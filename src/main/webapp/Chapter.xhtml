@@ -26,12 +26,20 @@
 			<p:inputText autocomplete="off" id="description"
 				styleClass="form-control" 
 				value="#{chapterController.chapter.description}" required="true"/>
+						
+			<p:outputLabel for="cboCurso" value="Curso" />
+						
+			<p:selectOneMenu id="cboCurso"
+				value="#{chapterController.chapter.course}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{chapterController.listaCourse}"
+				var="c" itemLabel="#{c.name}" itemValue="#{c}" />
+			</p:selectOneMenu>
 
 			<br />
-
 			<br />
-
-			<p:commandButton value="Confirmar" actionListener="#{chapterController.insert(courseController.course.id)}"
+			<p:commandButton value="Confirmar" 
+			actionListener="#{chapterController.insert()}"
 				styleClass="btn btn-primary " update="@form"
 				action="testUpdate?faces-redirect=true"/>
 

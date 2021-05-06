@@ -58,10 +58,7 @@
 			id="lstChapter" var="chap"
 				value="#{chapterController.listaChapter}"
 				paginator="true" paginatorPosition="top"
-				rowsPerPageTemplate="10,20,30,40,50" rows="10"
-				styleClass="table table-bordered"
-				emptyMessage="No existen registros" rowIndexVar="item"
-				style="margin-bottom:0">
+				rowsPerPageTemplate="10,20,30,40,50" rows="10">
 				
 				<p:column headerText="Name" >
 					<h:outputText value="#{chap.name}" />
@@ -79,6 +76,10 @@
 				actionListener="#{chapterController.delet(chap)}"/>
 				</p:column>
 			</p:dataTable> 
+			
+			<p:commandButton
+				value="Nuevo" action="#{chapterController.newChapter()}"
+				styleClass="btn btn-danger" ajax="false" /> 
 
 		</h:form>
 	</ui:define>

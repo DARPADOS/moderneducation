@@ -17,9 +17,9 @@ public class ChapterServiceImpl implements IChapterService{
 	private IChapterDao rDao;
 	
 	@Override
-	public void insert(Chapter chap, Integer idCourse) {
+	public void insert(Chapter chap) {
 		
-		rDao.insert(chap,idCourse);
+		rDao.insert(chap);
 	}
 	
 	@Override
